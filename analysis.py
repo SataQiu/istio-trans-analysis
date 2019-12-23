@@ -123,6 +123,9 @@ class TransAnalysis(object):
             next_cursor = result["data"]["repository"]["pullRequests"]["pageInfo"]["endCursor"]
             prs = result["data"]["repository"]["pullRequests"]["edges"]
             for pr in prs:
+                print("process: ", pr)
+                if pr["node"]["author"] is None:
+                    continue
                 pr_number = pr["node"]["number"]
                 pr_github_id = pr["node"]["author"]["login"]
                 pr_merged_time = pr["node"]["mergedAt"]
@@ -172,6 +175,9 @@ class TransAnalysis(object):
             next_cursor = result["data"]["repository"]["pullRequests"]["pageInfo"]["endCursor"]
             prs = result["data"]["repository"]["pullRequests"]["edges"]
             for pr in prs:
+                print("process: ", pr)
+                if pr["node"]["author"] is None:
+                    continue
                 pr_number = pr["node"]["number"]
                 pr_github_id = pr["node"]["author"]["login"]
                 pr_merged_time = pr["node"]["mergedAt"]
